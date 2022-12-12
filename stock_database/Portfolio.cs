@@ -20,12 +20,18 @@ namespace stock_database
         {
             InitializeComponent();
             SetListBoxData();
+            SetTableData();
 
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             SetListBoxData();
+        }
+
+        private void SetTableData()
+        {
+            ownedBindingSource1.DataSource = furaadatbazisContext.Owneds.ToList();
         }
 
         private void SetListBoxData()
@@ -40,8 +46,30 @@ namespace stock_database
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            var selectedStock = prtfolioListBox.SelectedItem;
-            
+            bool used = false;
+            var selectedItem = (AvailableStock)prtfolioListBox.SelectedItem;
+
+
+            Owned stock = new Owned();
+            stock.Id = selectedItem.Id;
+            stock.TickerSymbol = selectedItem.TickerSymbol;
+            foreach (var item in furaadatbazisContext.Owneds)
+            {
+                if (stock.TickerSymbol == item.TickerSymbol)
+                {
+                    used = true;
+                }
+            }
+            furaadatbazisContext.Owneds.Add(stock);
+            try
+            {
+                furaadatbazisContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            SetTableData();
         }
     }
 }

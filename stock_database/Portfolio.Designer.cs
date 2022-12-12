@@ -37,10 +37,14 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ownedBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.portfolioLabel = new System.Windows.Forms.Label();
+            this.ownedBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.availableStockBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ownedBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ownedBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -96,7 +100,10 @@
             // 
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.DataSource = this.ownedBindingSource;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn1});
+            this.dataGridView1.DataSource = this.ownedBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(12, 27);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
@@ -112,6 +119,22 @@
             this.portfolioLabel.TabIndex = 0;
             this.portfolioLabel.Text = "Your Portfolio";
             // 
+            // ownedBindingSource1
+            // 
+            this.ownedBindingSource1.DataSource = typeof(stock_database.Models.Owned);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "TickerSymbol";
+            this.dataGridViewTextBoxColumn1.HeaderText = "TickerSymbol";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
             // Portfolio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -125,6 +148,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.availableStockBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ownedBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ownedBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -140,5 +164,8 @@
         private BindingSource availableStockBindingSource;
         private TextBox textBox1;
         private Button addButton;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private BindingSource ownedBindingSource1;
     }
 }
